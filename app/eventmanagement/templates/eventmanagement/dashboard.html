@@ -1,0 +1,137 @@
+{% extends 'eventmanagement/layout.html' %}
+
+{% load static %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="dashboard">
+    <div class="card-wrapper">
+        <div class="event-card">&#9989; Completed events {{ completed_events | length }}</div>
+        <div class="event-card">&#9855; Running events {{ ongoing_events | length }}</div>
+        <div class="event-card">&#9875; Upcoming events{{ upcoming_events | length }}</div>
+    </div>
+    <div class="event-list-container">
+        <div>
+            <h1 class="event-list-header">All Events</h1>
+            <button class="next" onclick="changeSummary(0)">&#8680;</button>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Title</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'event-page' event_id=event.id %}">{{ event.title }}</a></td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.end }}</td>
+                    <td>{{ event.status }}</td>
+                {% empty %}
+                <p>No available events to show...</p>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="event-list-container">
+        <div>
+            <h1 class="event-list-header">Upcoming Events</h1>
+            <button class="next" onclick="changeSummary(1)">&#8680;</button>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Title</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in upcoming_events %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.end }}</td>
+                {% empty %}
+                    <p>No available events to show...</p>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="event-list-container">
+        <div>
+            <h1 class="event-list-header">Ongoing Events</h1>
+            <button class="next" onclick="changeSummary(2)">&#8680;</button>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Title</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in ongoing_events %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.end }}</td>
+                {% empty %}
+                    <p>No available events to show...</p>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="event-list-container">
+        <div>
+            <h1 class="event-list-header">Completed Events</h1>
+            <button class="next" onclick="changeSummary(3)">&#8680;</button>
+        </div>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Title</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in completed_events %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ event.title }}</td>
+                    <td>{{ event.start }}</td>
+                    <td>{{ event.end }}</td>
+                {% empty %}
+                    <p>No available events to show...</p>
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

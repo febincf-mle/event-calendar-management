@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f7f9fc;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #e94e77;
+        }
+        p {
+            font-size: 1.25rem;
+            margin: 0.5em 0 1.5em;
+        }
+        a {
+            text-decoration: none;
+            color: #e94e77;
+            font-weight: bold;
+            border: 2px solid #e94e77;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        a:hover {
+            background-color: #e94e77;
+            color: #fff;
+        }
+        svg {
+            width: 200px;
+            height: auto;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12" y2="8"/>
+        </svg>
+        <h1>{{ error.code }}</h1>
+        <p>{{ error.message }}</p>
+        <a href="{% url error.redirect %}">Go Back {{ error.destination }}</a>
+    </div>
+</body>
+</html>

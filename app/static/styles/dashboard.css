@@ -1,0 +1,106 @@
+.event-list-container
+{
+    width: 80%;
+    margin: 50px auto 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+tr:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tbody td {
+    text-align: left;
+    padding: 10px;
+}
+
+.selected {
+    background-color: #ffeb3b; /* Yellow for selected row */
+    color: #000; /* Black text */
+}
+
+.card-wrapper
+{
+    margin: 50px auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    text-align: center;
+}
+
+.event-card
+{
+    border: 1px groove whitesmoke;
+    box-shadow: 1px 1px 1px 1px whitesmoke;
+    padding: 1rem;
+    transition: 0.5s;
+}
+
+.event-card:hover
+{
+    transform: scale(110%);
+    cursor: pointer;
+}
+
+
+.event-list-container div
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.next
+{
+    background-color: black;
+    color: white;
+    padding: 5px 1.5rem;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+.next:hover
+{
+    background-color: whitesmoke;
+    border: 1px groove black;
+    cursor: pointer;
+    color: black;
+}
